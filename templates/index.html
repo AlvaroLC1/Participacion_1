@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>LOGIN</title>
+</head>
+<body>
+    <H1>Inicio de Sesión</H1>
+    <P>Introduce los datos para ingresar:</P>
+    <form action="{{ url_for('procesa') }}" method="POST">
+        <table>
+            <tr>
+                <td>Usuario:</td>
+                <td><input type="text" name="usuario" required></td>
+            </tr>
+            <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="contrasena" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Ingresar"></td>
+            </tr>
+        </table>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+</body>
+</html>
